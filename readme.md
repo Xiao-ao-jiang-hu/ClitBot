@@ -99,6 +99,9 @@ enum OpType { TL, TR, MOV, JMP, LIT, CALL, P1, P2};
 ```
 
 ## 五、代码结构
+### defines.h
+包含所有的公共变量定义
+
 ### draw.h
 包含绘制单步状态模块
 
@@ -107,4 +110,12 @@ enum OpType { TL, TR, MOV, JMP, LIT, CALL, P1, P2};
 参数：WritePath(char*), map(Map)
 
 第一个代表存盘路径及文件名
+
 第二个代表某步操作后的map状态
+
+### show.h
+包含图片展示模块
+
+参数：ImgPath(char*)
+
+代表要展示的图片的路径及文件名
