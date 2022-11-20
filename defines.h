@@ -13,6 +13,7 @@ struct Robot {
 struct Cell {
 	int height; // 高度 
 	int light;//灯状态，0代表没有灯，1代表有灯没点亮，2代表有灯且点亮
+	bool robot;//单元格上是否有机器人
 };
 
 struct Map {
