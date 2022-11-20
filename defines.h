@@ -1,5 +1,6 @@
 //通用数据结构
 #pragma once
+
 struct Position {
 	int x, y; // x 表示列号，y 表示行号 
 };
