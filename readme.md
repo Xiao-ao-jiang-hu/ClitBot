@@ -104,10 +104,7 @@ enum OpType { TL, TR, MOV, JMP, LIT, CALL, P1, P2};
 
 实现为draw()函数
 
-参数：n(int), rock_indexies(int*), WritePath(char*)
+参数：WritePath(char*), map(Map)
 
-第一个代表共有n个石块
-
-第二个代表每一个石块的偏移量，按顺序存储
-
-第三个代表存储图片的路径和名称
+第一个代表存盘路径及文件名
+第二个代表某步操作后的map状态
