@@ -10,17 +10,15 @@ struct Robot {
 
 struct Cell {
 	int height; // 高度 
-	bool robot; // true/false分别表示机器人在/不在该单元格上
+	Robot robot; // true/false分别表示机器人在/不在该单元格上
 	int light;//灯状态，0代表没有灯，1代表有灯没点亮，2代表有灯且点亮
 };
 
 struct Map {
 	// 单元格组成二维数组，MAX_ROW、MAX_COL为合理常数 
 	Cell cells[6][8];
-	int row, col;
 	// 有效行数、有效列数
+	int row, col;
+	//已经点亮的灯的数目
 	int num_lights;
-	// 地图上同时只有一个机器人
-	Robot robot;
-	// 每个过程的指令数限制
 };
