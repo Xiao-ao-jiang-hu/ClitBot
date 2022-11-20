@@ -216,7 +216,7 @@ void draw_step(char* WritePath, Map map)
 	map.cells[0][5].height = 1;
 	map.cells[3][0].height = 1;
 	map.cells[4][0].height = 1;
-	map.cells[4][4].height = 3;
+	map.cells[4][4].height = 2;
 	readAdd(rock);
 	int x0 = 400, y0 = 300;
 	for (int i = 0; i < map.row; i++) {
