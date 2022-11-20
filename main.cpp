@@ -2,6 +2,7 @@ using namespace std;
 //#include<Python.h>
 #include"draw.h"
 #include"show.h"
+#include"defines.h"
 
 const int MAX_ROW = 4;
 const int MAX_COL = 5;
