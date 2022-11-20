@@ -12,7 +12,6 @@ struct Robot {
 
 struct Cell {
 	int height; // 高度 
-	Robot robot; // true/false分别表示机器人在/不在该单元格上
 	int light;//灯状态，0代表没有灯，1代表有灯没点亮，2代表有灯且点亮
 };
 
@@ -23,4 +22,5 @@ struct Map {
 	int row, col;
 	//已经点亮的灯的数目
 	int num_lights;
+	Robot robot;
 };

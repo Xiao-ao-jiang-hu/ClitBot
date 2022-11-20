@@ -197,15 +197,19 @@ void draw_step(char* WritePath, Map map)
 	char forward[] = "resources/forward.bmp";
 	char right[] = "resources/right.bmp";
 	char left[] = "resources/left.bmp";
+	int h, x, y;
+	int x0 = 400, y0 = 300;
 	readBackground(bg);
 
 	//逐个添加石块
 	map.row = 5;
 	map.col = 5;
 	map.cells[0][0].height = 4;
+	map.cells[0][0].light = 1;
 	map.cells[0][1].height = 3;
 	map.cells[1][0].height = 3;
 	map.cells[1][1].height = 2;
+	map.cells[1][1].light = 2;
 	map.cells[2][0].height = 1;
 	map.cells[2][1].height = 1;
 	map.cells[2][2].height = 1;
@@ -217,18 +221,63 @@ void draw_step(char* WritePath, Map map)
 	map.cells[3][0].height = 1;
 	map.cells[4][0].height = 1;
 	map.cells[4][4].height = 3;
+	map.robot.pos.x = 1;
+	map.robot.pos.y = 1;
+	map.robot.direction = 2;
+	
 	readAdd(rock);
-	int x0 = 400, y0 = 300;
 	for (int i = 0; i < map.row; i++) {
 		for (int j = 0; j < map.col; j++) {
 			for (int k = 0; k < map.cells[i][j].height; k++) {
-				int h = map.cells[i][j].height;
-				int x = x0 + 85 * i - 80 * j;
-				int y = y0 + 25 * i + 20 * j - 70 * k;
+				h = map.cells[i][j].height;
+				x = x0 + 85 * i - 80 * j;
+				y = y0 + 25 * i + 20 * j - 70 * k;
 				combine(x, y);
 			}
 		}
 	}
+	delete[] pAddBuf;
+
+	//逐个添加灯
+	readAdd(unlight);
+	for (int i = 0; i < map.row; i++) {
+		for (int j = 0; j < map.col; j++) {
+			if (map.cells[i][j].light == 1) {
+				h = map.cells[i][j].height;
+				x = x0 + 85 * i - 80 * j+50;
+				y = y0 + 25 * i + 20 * j - 70 * h+40;
+				combine(x, y);
+			}
+		}
+	}
+	delete[] pAddBuf;
+	readAdd(light);
+	for (int i = 0; i < map.row; i++) {
+		for (int j = 0; j < map.col; j++) {
+			if (map.cells[i][j].light == 2) {
+				h = map.cells[i][j].height;
+				x = x0 + 85 * i - 80 * j + 50;
+				y = y0 + 25 * i + 20 * j - 70 * h + 40;
+				combine(x, y);
+			}
+		}
+	}
+	delete[] pAddBuf;
+
+	//添加机器人
+	if (map.robot.direction == 1) {
+		readAdd(forward);
+	}else if (map.robot.direction == 2) {
+		readAdd(left);
+	}else if (map.robot.direction == 3) {
+		readAdd(back);
+	}else if (map.robot.direction == 4) {
+		readAdd(right);
+	}
+	h = map.cells[map.robot.pos.x][map.robot.pos.y].height;
+	x = x0 + 85 * map.robot.pos.x - 80 * map.robot.pos.y + 50;
+	y = y0 + 25 * map.robot.pos.x + 20 * map.robot.pos.y - 70 * h + 40;
+	combine(x, y);
 	delete[] pAddBuf;
 	/*
 	if (if_light == 1) {

@@ -11,7 +11,6 @@ const int MAX_PROCS = 30;
 
 
 
-Cell cell[2][3] = { {{2,0,0} ,{2,0,0}} ,{{2,0,0} ,{2,0,0}} };
 
 Map map0;
 
