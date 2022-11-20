@@ -201,7 +201,7 @@ void draw_step(char* WritePath, Map map)
 	int x0 = 400, y0 = 300;
 	readBackground(bg);
 
-	//逐个添加石块
+	//临时定义一个map，要调用请删除这几行
 	map.row = 5;
 	map.col = 5;
 	map.cells[0][0].height = 4;
@@ -227,8 +227,11 @@ void draw_step(char* WritePath, Map map)
 	map.robot.direction = 4;
 	
 	
+	//绘制部分
+	//遍历每一个单元格
 	for (int i = 0; i < map.row; i++) {
 		for (int j = 0; j < map.col; j++) {
+			//画石头
 			for (int k = 0; k < map.cells[i][j].height; k++) {
 				readAdd(rock);
 				h = map.cells[i][j].height;
@@ -237,6 +240,7 @@ void draw_step(char* WritePath, Map map)
 				combine(x, y);
 				delete[] pAddBuf;
 			}
+			//有灯画灯
 			if (map.cells[i][j].light == 2) {
 				readAdd(light);
 				h = map.cells[i][j].height;
@@ -252,6 +256,7 @@ void draw_step(char* WritePath, Map map)
 				combine(x, y);
 				delete[] pAddBuf;
 			}
+			//有机器人画机器人
 			if (map.cells[i][j].robot) {
 				if (map.robot.direction == 1) {
 						readAdd(forward);
@@ -271,31 +276,7 @@ void draw_step(char* WritePath, Map map)
 		}
 	}
 	
-
-
-	//添加机器人
-	
-	
-	/*
-	if (if_light == 1) {
-		readAdd(unlight);
-		for (int i = 0; i < n; i++){
-			int x = rock_indexies[2 * i];
-			int y = rock_indexies[2 * i + 1];
-			combine(x, y);
-		}
-	}
-	else if (if_light == 2) {
-		readAdd(light);
-		for (int i = 0; i < n; i++) {
-			int x = rock_indexies[2 * i];
-			int y = rock_indexies[2 * i + 1];
-			combine(x, y);
-		}
-	}
-	delete[] pAddBuf;
-	*/
-	
+	//存盘
 	saveBmp(WritePath, pBackgroundBuf, backgroundWidth, backgroundHeight, biBitCountBackground, pColorTableBackground);
 
 	// 清除背景画布变量
