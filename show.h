@@ -33,14 +33,11 @@ int show(char* filename)
 	char Title[255] = { 0 };
 	GetConsoleTitleA(Title, 255);
 	HDC dc = GetDC(FindWindowA(0, Title));
-	SetConsoleTitleA("控制台显示图片");
+	SetConsoleTitleA("第i步");
 
-	do
-	{
-		SetDIBitsToDevice(dc, 50, 10, bi->biWidth, bi->biHeight, 0, -0, 0, bi->biHeight, bi + 1, (LPBITMAPINFO)bi, 0);
-	} while (printf("%c", getchar()));
 
-	getchar();
+	SetDIBitsToDevice(dc, 50, 10, bi->biWidth, bi->biHeight, 0, -0, 0, bi->biHeight, bi + 1, (LPBITMAPINFO)bi, 0);
+	Sleep(1000);
 	return 0;
 }
 

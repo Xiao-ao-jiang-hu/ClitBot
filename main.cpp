@@ -16,8 +16,9 @@ Map map0;
 
 int main() {
 	char savepath[] = "outputs/output.bmp";
-	char filename[] = "outputs/output.bmp";
+	char filename[] = "resources/background.bmp";
 	draw_step(savepath, map0);
 
+	show(savepath);
 	show(filename);
 }
