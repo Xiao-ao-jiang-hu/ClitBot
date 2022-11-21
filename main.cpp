@@ -1,5 +1,6 @@
 using namespace std;
 //#include<Python.h>
+#include"draw_all.h"
 #include"draw.h"
 #include"show.h"
 #include"defines.h"

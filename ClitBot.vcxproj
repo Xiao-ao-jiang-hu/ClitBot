@@ -133,6 +133,7 @@
     <ClInclude Include="defines.h" />
     <ClInclude Include="draw.h" />
     <ClInclude Include="show.h" />
+    <ClInclude Include="draw_all.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.md" />

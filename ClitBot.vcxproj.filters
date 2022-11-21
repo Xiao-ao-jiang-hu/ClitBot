@@ -24,6 +24,9 @@
     <ClInclude Include="defines.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="draw_all.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

@@ -127,6 +127,19 @@ enum OpType { TL, TR, MOV, JMP, LIT, CALL, P1, P2};
 
 代表要展示的图片的路径及文件名
 
+### draw_all.h
+包含绘制多步模块
+
+实现为draw_all()函数
+
+参数：output_path(char*), steps(int), maps(Map*)
+
+第一个代表输出文件夹
+
+第二个代表除初始状态外有多少个需要绘制的地图状态
+
+第三个代表包含所有地图状态的地图结构体数组
+
 ## 七、开发日志
 ### Nov.17
 进行项目结构和逻辑的设计
@@ -152,3 +165,7 @@ enum OpType { TL, TR, MOV, JMP, LIT, CALL, P1, P2};
 
 ### Nov.21
 进一步研究了windows自带的图形界面接口，改进了show函数，图形显示速度极大幅度提升
+
+添加draw_all.h头文件，包含draw_all函数，可一次性画完所有步骤并输出为不同名称的文件
+
+开始研究GUI界面
