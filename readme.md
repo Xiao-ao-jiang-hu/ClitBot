@@ -168,4 +168,4 @@ enum OpType { TL, TR, MOV, JMP, LIT, CALL, P1, P2};
 
 添加draw_all.h头文件，包含draw_all函数，可一次性画完所有步骤并输出为不同名称的文件
 
-开始研究GUI界面
+开始研究GUI界面，发现微软文档写的像使，未果
