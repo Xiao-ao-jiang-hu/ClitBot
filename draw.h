@@ -27,11 +27,7 @@ bool readBackground(char* backgroundName)
 	//二进制读方式打开指定的图像文件
 	FILE* fp;
 	errno_t err = fopen_s(&fp, backgroundName, "rb");
-	//FILE* fp = fopen(backgroundName, "rb");
-	if (fp == 0) {
-		cout << "No such background file";
-		return 0;
-	}
+
 	//跳过位图文件头结构BITMAPFILEHEADER
 	fseek(fp, sizeof(BITMAPFILEHEADER), 0);
 	//定义位图信息头结构变量，读取位图信息头进内存，存放在变量head中
@@ -74,11 +70,7 @@ bool readAdd(char* AddName)
 {
 	FILE* fp;
 	errno_t err = fopen_s(&fp, AddName, "rb");
-	//FILE* fp = fopen(AddName, "rb");
-	if (fp == 0) {
-		cout << "no such add file";
-		return 0;
-	}
+
 	fseek(fp, sizeof(BITMAPFILEHEADER), 0);
 	BITMAPINFOHEADER headadd;
 	fread(&headadd, sizeof(BITMAPINFOHEADER), 1, fp);
@@ -203,30 +195,7 @@ void draw_step(char* WritePath, Map map)
 	readBackground(bg);
 
 	//临时定义一个map，要调用请删除这几行
-	map.row = 5;
-	map.col = 5;
-	map.cells[0][0].height = 4;
-	map.cells[0][0].light = 1;
-	map.cells[0][1].height = 3;
-	map.cells[1][1].robot = 1;
-	map.cells[1][0].height = 3;
-	map.cells[1][1].height = 2;
-	map.cells[1][1].light = 2;
-	map.cells[2][0].height = 1;
-	map.cells[2][1].height = 1;
-	map.cells[2][2].height = 1;
-	map.cells[1][2].height = 1;
-	map.cells[0][2].height = 1;
-	map.cells[0][3].height = 1;
-	map.cells[0][4].height = 1;
-	map.cells[0][5].height = 1;
-	map.cells[3][0].height = 1;
-	map.cells[4][0].height = 1;
-	map.cells[4][4].height = 3;
-	map.robot.pos.x = 1;
-	map.robot.pos.y = 1;
-	map.robot.direction = 4;
-	
+
 	
 	//绘制部分
 	//遍历每一个单元格
@@ -245,15 +214,15 @@ void draw_step(char* WritePath, Map map)
 			if (map.cells[i][j].light == 2) {
 				readAdd(light);
 				h = map.cells[i][j].height;
-				x = x0 + 85 * i - 80 * j + 40;
-				y = y0 + 25 * i + 20 * j - 70 * h + 40;
+				x = x0 + 85 * i - 80 * j + 90;
+				y = y0 + 25 * i + 20 * j - 70 * h + 50;
 				combine(x, y);
 				delete[] pAddBuf;
 			}else if (map.cells[i][j].light == 1) {
 				readAdd(unlight);
 				h = map.cells[i][j].height;
-				x = x0 + 85 * i - 80 * j + 40;
-				y = y0 + 25 * i + 20 * j - 70 * h + 40;
+				x = x0 + 85 * i - 80 * j + 90;
+				y = y0 + 25 * i + 20 * j - 70 * h + 50;
 				combine(x, y);
 				delete[] pAddBuf;
 			}
